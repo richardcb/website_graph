@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts":{
+    "start":"http-server . -p 3000 -o -U --gzip -a localhost"
+  },
   "dependencies": {
+    "http-server": "^0.11.1",
+    "nodemon": "^1.17.5"
   }
 }
