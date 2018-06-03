@@ -1,0 +1,11 @@
+{
+  "name": "website_graph",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "vega": "^4.0.0-rc.2",
+    "vega-embed": "^3.14.0",
+    "vega-lite": "^2.5.1"
+  }
+}
