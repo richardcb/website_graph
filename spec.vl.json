@@ -1,49 +1,56 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  
   "data": {
     "url": "diversification_data.csv",
     "format": {
       "type": "csv",
-      "parse": {
-        "date": "date"
-      }
+      "Date":"date"
     }
   },
+
   "width": 800,
   "height": 400,
+  
   "layer": [
+  
     {
       "encoding": {
-        "x": {"field": "date", "type": "temporal"},
-        "y": {"field": "price", "type": "quantitative"},
-        "color": {"field": "symbol", "type": "nominal"}
+        "x": {"field": "Date", "type": "temporal"},
+        "y": {"field": "Value", "type": "quantitative"},
+        "color": {"field": "Series", "type": "nominal"}
       },
-      "layer": [{
-        "mark": "line"
-      },{
-        "selection": {
-          "tooltip": {
-            "type": "single",
-            "nearest": true,
-            "on": "mouseover",
-            "encodings": [
-              "x"
-            ],
-            "empty": "none"
-          }
+      
+      "layer": [
+        {
+          "mark": "line"
         },
-        "mark": "point",
-        "encoding": {
-          "opacity": {
-            "condition": {
-              "selection": "tooltip",
-              "value": 1
-            },
-            "value": 0
+        {
+          "selection": {
+            "tooltip": {
+              "type": "single",
+              "nearest": true,
+              "on": "mouseover",
+              "encodings": [
+                "x"
+              ],
+              "empty": "none"
+            }
+          },
+          "mark": "point",
+          "encoding": {
+            "opacity": {
+              "condition": {
+                "selection": "tooltip",
+                "value": 1
+              },
+              "value": 0
+            }
           }
         }
-      }]
+      ]
     },
+    
     {
       "transform": [
         {
@@ -52,43 +59,46 @@
           }
         }
       ],
-      "layer": [{
-        "mark": {
-         "type": "rule",
-         "color": "gray"
-        },
-        "encoding": {
-          "x": {
-            "type": "temporal",
-            "field": "date"
+      "layer": [
+        {
+          "mark": {
+            "type": "rule",
+            "color": "gray"
+          },
+          "encoding": {
+            "x": {
+              "type": "temporal",
+              "field": "Date"
+            }
+          }
+        }, 
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 5,
+            "dy": -5
+          },
+          "encoding": {
+            "text": {
+              "type": "quantitative",
+              "field": "Value"
+            },
+            "color": {
+              "type": "nominal",
+              "field": "Series"
+            },
+            "x": {
+              "type": "temporal",
+              "field": "Date"
+            },
+            "y": {
+              "type": "quantitative",
+              "field": "Value"
+            }
           }
         }
-      }, {
-        "mark": {
-          "type": "text",
-          "align": "left",
-          "dx": 5,
-          "dy": -5
-        },
-        "encoding": {
-          "text": {
-            "type": "quantitative",
-            "field": "price"
-          },
-          "color": {
-            "type": "nominal",
-            "field": "symbol"
-          },
-          "x": {
-            "type": "temporal",
-            "field": "date"
-          },
-          "y": {
-            "type": "quantitative",
-            "field": "price"
-          }
-        }
-      }]
-   }
- ]
+      ]
+    }
+  ]
 }

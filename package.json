@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts":{
+    "start":"nodemon -w . -x http-server . -a localhost -p 3000 -c1 -o -U --gzip"
+  },
   "dependencies": {
-    "vega": "^4.0.0-rc.2",
-    "vega-embed": "^3.14.0",
-    "vega-lite": "^2.5.1"
+    "http-server": "^0.11.1",
+    "nodemon": "^1.17.5"
   }
 }
