@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts":{
-    "start":"http-server . -p 3000 -o -U --gzip -a localhost"
+    "start":"nodemon -w . -x http-server . -a localhost -p 3000 -c1 -o -U --gzip"
   },
   "dependencies": {
     "http-server": "^0.11.1",
